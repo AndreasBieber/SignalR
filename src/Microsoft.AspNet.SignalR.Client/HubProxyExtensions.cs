@@ -16,6 +16,13 @@ namespace Microsoft.AspNet.SignalR.Client
     /// </summary>
     public static class HubProxyExtensions
     {
+        public static ITypedHubProxy<TServerContract, TClientContract> AsTypedHubProxy<TServerContract, TClientContract>(this IHubProxy proxy)
+            where TServerContract : class
+            where TClientContract : class
+        {
+            return new TypedHubProxy<TServerContract, TClientContract>(proxy);
+        }
+
         /// <summary>
         /// Gets the value of a state variable.
         /// </summary>
